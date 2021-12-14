@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 app.get('/api/quotes/random',(req,res) => {
   const randomQuote = getRandomElement(quotes)
-  res.send(randomQuote);
+  res.send({quote : randomQuote});
 })
 
 app.listen(PORT, () => {
