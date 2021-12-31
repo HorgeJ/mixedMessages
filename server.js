@@ -10,8 +10,9 @@ app.use(express.static('public'));
 
 app.get('/api/quotes',(req,res) => {
   const strAuthor = req.query.person
+  const arrAuthorQuotes = quotes.filter( x => x.person === strAuthor)
   if(strAuthor){
-    console.log(strAuthor)
+    res.send({quotes : arrAuthorQuotes})
   } else {
     res.send({quotes : quotes});
   }
