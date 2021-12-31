@@ -23,6 +23,19 @@ app.get('/api/quotes/random',(req,res) => {
   res.send({quote : randomQuote});
 })
 
+app.post('/api/quotes', (req, res) => {
+  if(req.query.quote && req.query.person){
+    const newQuote = {
+      quote: req.query.quote,
+      person: req.query.person
+    };
+    quotes.push(newQuote);
+    res.send({ quote: newQuote });
+  } else {
+    res.status(400).send('')
+  }
+})
+
 app.listen(PORT, () => {
     console.log(`Mixed Messages listening at http://localhost:${PORT}`);
   })
